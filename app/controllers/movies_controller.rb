@@ -6,6 +6,13 @@ class MoviesController < ApplicationController
     @movies = Movie.find(:all, :order => params[:sort_by])
     params[:sort_by] == nil ? @id = nil : params[:sort_by] == "title" ? @id = :title_header : @id = :release_date_header
     @all_ratings = Movie.get_ratings 
+    @show_by_rating = params[:ratings]
+    #@id == nil ? @checked_boxes = @all_ratings : @checked_boxes = @show_by_ratings.keys
+    #@checked_boxes = @all_ratings 
+    if @show_by_rating != nil
+    	@movies = Movie.find_all_by_rating(@show_by_rating.keys)
+        @checked_boxes = @show_by_rating.keys
+    end
   end
 
   def show
