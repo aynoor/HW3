@@ -1,11 +1,11 @@
 # This file is app/controllers/movies_controller.rb
 class MoviesController < ApplicationController
-
   def index
     #@movies = Movie.all
     params[:sort_by] == nil ? @hilite = false : @hilite = true
     @movies = Movie.find(:all, :order => params[:sort_by])
     params[:sort_by] == nil ? @id = nil : params[:sort_by] == "title" ? @id = :title_header : @id = :release_date_header
+    @all_ratings = Movie.get_ratings 
   end
 
   def show
