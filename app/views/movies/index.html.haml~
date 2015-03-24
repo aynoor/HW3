@@ -12,22 +12,9 @@
       %th More Info
   %tbody
     - @movies.each do |movie|
-      -if @hilite && @id == :title_header
-        %tr
-          %td{:class => "hilite"}= movie.title
-          %td= movie.rating
-          %td= movie.release_date
-          %td= link_to "More about #{movie.title}", movie_path(movie)
-      -elsif @hilite && @id == :release_date_header
-        %tr
-          %td= movie.title
-          %td= movie.rating
-          %td{:class => "hilite"}= movie.release_date
-          %td= link_to "More about #{movie.title}", movie_path(movie)	
-      -else
-        %tr
-          %td= movie.title
-          %td= movie.rating
-          %td= movie.release_date
-          %td= link_to "More about #{movie.title}", movie_path(movie)
+      %tr
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
 = link_to 'Add new movie', new_movie_path

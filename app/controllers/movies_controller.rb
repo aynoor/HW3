@@ -3,8 +3,9 @@ class MoviesController < ApplicationController
 
   def index
     #@movies = Movie.all
+    params[:sort_by] == nil ? @hilite = false : @hilite = true
     @movies = Movie.find(:all, :order => params[:sort_by])
-    params[:sort_by] == nil ? @id = :movies : params[:sort_by] == "title" ? @id = :title_header : @id = :release_date_header
+    params[:sort_by] == nil ? @id = nil : params[:sort_by] == "title" ? @id = :title_header : @id = :release_date_header
   end
 
   def show

@@ -61,3 +61,7 @@ form label {
   font-weight: bold;
   color: maroon;
 }
+.hilite {
+  background : orange;
+}
+
